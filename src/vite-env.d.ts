@@ -8,7 +8,6 @@
 
 interface ImportMetaEnv {
   readonly VITE_API_BASE_URL: string;
-  readonly VITE_OAUTH_CLIENT_ID: string;
   readonly VITE_ACCESS_TOKEN: string;
   readonly VITE_OAUTH_SCOPES: string;
   readonly VITE_DEBUG_JMAP?: string;

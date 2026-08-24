@@ -71,7 +71,6 @@ Configuration is done through Vite environment variables. Copy or edit `.env.dev
 
 ```
 VITE_API_BASE_URL=http://localhost:443
-VITE_OAUTH_CLIENT_ID=stalwart-webui
 VITE_ACCESS_TOKEN=
 VITE_OAUTH_SCOPES=
 ```
@@ -79,9 +78,19 @@ VITE_OAUTH_SCOPES=
 | Variable | Description |
 |---|---|
 | `VITE_API_BASE_URL` | URL of the Stalwart server. Used for all API requests during development. In production builds (when empty or unset) requests are relative to the current origin. |
-| `VITE_OAUTH_CLIENT_ID` | OAuth 2.0 client ID. Defaults to `stalwart-webui`. |
 | `VITE_ACCESS_TOKEN` | When set, skips the OAuth flow entirely and uses this token for all requests. Useful for local development and testing. |
 | `VITE_OAUTH_SCOPES` | Optional OAuth scopes. Omitted from the authorization request when empty. |
+
+### OAuth client ID
+
+The OAuth 2.0 client ID is not a build-time setting. It is read at runtime from a meta tag in `index.html`:
+
+```html
+<meta name="oauth-client-id" content="" />
+```
+
+The server rewrites the `content` attribute when it serves the page, so a single build works for any deployment. When no
+client ID is configured the attribute is left empty and the panel falls back to `stalwart-webui`.
 
 ### Bypassing OAuth for development
 

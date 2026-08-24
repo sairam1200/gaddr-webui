@@ -6,9 +6,9 @@
 
 import { getApiBaseUrl } from '@/services/api';
 import { getBasePath } from '@/lib/basePath';
+import { getOAuthClientId } from '@/lib/oauthClientId';
 import i18n from '@/i18n';
 
-const CLIENT_ID = (import.meta.env.VITE_OAUTH_CLIENT_ID as string) || 'stalwart-webui';
 const SCOPES = import.meta.env.VITE_OAUTH_SCOPES as string | undefined;
 
 const SESSION_PREFIX = 'stalwart-oauth-';
@@ -97,7 +97,7 @@ export async function exchangeCode(
     grant_type: 'authorization_code',
     code,
     code_verifier: codeVerifier,
-    client_id: CLIENT_ID,
+    client_id: getOAuthClientId(),
     redirect_uri: redirectUri,
   });
 
@@ -153,7 +153,7 @@ export async function startAuthFlow(username: string, returnUrl?: string | null)
 
   const params = new URLSearchParams({
     response_type: 'code',
-    client_id: CLIENT_ID,
+    client_id: getOAuthClientId(),
     redirect_uri: getRedirectUri(),
     code_challenge: codeChallenge,
     code_challenge_method: codeChallengeMethod,
@@ -206,7 +206,7 @@ export function getPostLogoutRedirectUri(): string {
 
 export function buildEndSessionUrl(endSessionEndpoint: string, postLogoutRedirectUri: string): string {
   const params = new URLSearchParams({
-    client_id: CLIENT_ID,
+    client_id: getOAuthClientId(),
     post_logout_redirect_uri: postLogoutRedirectUri,
   });
   const sep = endSessionEndpoint.includes('?') ? '&' : '?';

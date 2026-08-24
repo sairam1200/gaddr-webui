@@ -6,6 +6,7 @@
 
 import { useAuthStore } from '../stores/authStore';
 import { getBasePath } from '@/lib/basePath';
+import { getOAuthClientId } from '@/lib/oauthClientId';
 
 export function getApiBaseUrl(): string {
   const envUrl = import.meta.env.VITE_API_BASE_URL as string | undefined;
@@ -45,7 +46,7 @@ export async function refreshAccessToken(): Promise<void> {
       throw new Error('No refresh token or token endpoint available');
     }
 
-    const clientId = (import.meta.env.VITE_OAUTH_CLIENT_ID as string) || 'stalwart-webui';
+    const clientId = getOAuthClientId();
 
     try {
       const response = await fetch(tokenEndpoint, {

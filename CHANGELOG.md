@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.0.9] - 2026-08-24
+
+### Added
+- Server configurable OAuth client ID.
+
+### Changed
+
+### Fixed
+
 ## [1.0.8] - 2026-07-31
 
 ### Added

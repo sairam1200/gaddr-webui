@@ -12,19 +12,14 @@ dist
 dist-ssr
 *.local
 
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
-.DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
 .ignore
 scripts/
-*.md
-!README.md
-!CHANGELOG.md
-/SPEC-*
+
+.*
+!.gitignore
+!.prettierrc
+!.env.development
+!.github/
+!.vscode/
+.vscode/*
+!.vscode/extensions.json
