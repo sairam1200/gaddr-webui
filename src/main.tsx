@@ -1,5 +1,6 @@
 /*
  * SPDX-FileCopyrightText: 2020 Stalwart Labs LLC <hello@stalw.art>
+ * SPDX-FileCopyrightText: 2026 Gaddr
  *
  * SPDX-License-Identifier: AGPL-3.0-only OR LicenseRef-SEL
  */
@@ -17,6 +18,8 @@ import { AdminPanel } from './pages/AdminPanel.lazy';
 import { ProtectedRoute } from './components/layout/ProtectedRoute';
 import { getBasePath } from './lib/basePath';
 import { loadLogoOnce } from './lib/logoCache';
+
+document.documentElement.dataset.gaddrBuild = '20260829';
 
 (() => {
   try {
