@@ -1,12 +1,13 @@
 /*
  * SPDX-FileCopyrightText: 2020 Stalwart Labs LLC <hello@stalw.art>
+ * SPDX-FileCopyrightText: 2026 Gaddr
  *
  * SPDX-License-Identifier: AGPL-3.0-only OR LicenseRef-SEL
  */
 
 import { useEffect } from 'react';
 
-const APP_NAME = 'Stalwart WebUI';
+const APP_NAME = 'Gaddr';
 
 export function useDocumentTitle(title?: string | null) {
   useEffect(() => {

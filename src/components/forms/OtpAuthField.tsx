@@ -1,5 +1,6 @@
 /*
  * SPDX-FileCopyrightText: 2020 Stalwart Labs LLC <hello@stalw.art>
+ * SPDX-FileCopyrightText: 2026 Gaddr
  *
  * SPDX-License-Identifier: AGPL-3.0-only OR LicenseRef-SEL
  */
@@ -27,17 +28,17 @@ interface OtpAuthFieldProps {
   readOnly: boolean;
 }
 
-const STALWART_IMAGE_URL = 'https://stalw.art/img/favicon-32x32.png';
+const GADDR_IMAGE_URL = 'https://admin.gaddr.com/account/gaddr-logo-xs.svg';
 
 function buildOtpAuthUrl(totp: OTPAuth.TOTP): string {
   const base = totp.toString();
   const sep = base.includes('?') ? '&' : '?';
-  return `${base}${sep}image=${encodeURIComponent(STALWART_IMAGE_URL)}`;
+  return `${base}${sep}image=${encodeURIComponent(GADDR_IMAGE_URL)}`;
 }
 
 function generateTotp(): { totp: OTPAuth.TOTP; url: string } {
   const totp = new OTPAuth.TOTP({
-    issuer: 'Stalwart',
+    issuer: 'Gaddr',
     label: 'account',
     algorithm: 'SHA1',
     digits: 6,

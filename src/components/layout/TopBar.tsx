@@ -1,5 +1,6 @@
 /*
  * SPDX-FileCopyrightText: 2020 Stalwart Labs LLC <hello@stalw.art>
+ * SPDX-FileCopyrightText: 2026 Gaddr
  *
  * SPDX-License-Identifier: AGPL-3.0-only OR LicenseRef-SEL
  */
@@ -88,7 +89,7 @@ export function TopBar() {
             </Link>
           </TooltipTrigger>
           <TooltipContent side="bottom">
-            {t('version.label', 'Stalwart WebUI v{{version}}', { version: __APP_VERSION__ })}
+            {t('version.label', 'Gaddr v{{version}}', { version: __APP_VERSION__ })}
           </TooltipContent>
         </Tooltip>
       </TooltipProvider>
