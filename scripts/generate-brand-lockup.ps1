@@ -14,15 +14,32 @@ $wordmarkPath = Join-Path $repositoryDirectory 'src\assets\gaddr-logo.svg'
 $sourceOutputPath = Join-Path $repositoryDirectory 'src\assets\gaddr-brand.svg'
 $publicOutputPath = Join-Path $repositoryDirectory 'public\gaddr-brand.svg'
 
-$iconData = [Convert]::ToBase64String([IO.File]::ReadAllBytes($iconPath))
-$wordmarkData = [Convert]::ToBase64String([IO.File]::ReadAllBytes($wordmarkPath))
+function Get-SvgInnerContent([string]$path) {
+  $source = [IO.File]::ReadAllText($path)
+  $match = [Text.RegularExpressions.Regex]::Match(
+    $source,
+    '<svg\b[^>]*>(?<content>[\s\S]*)</svg>\s*$',
+    [Text.RegularExpressions.RegexOptions]::IgnoreCase
+  )
+  if (-not $match.Success) {
+    throw "Could not extract SVG content from $path"
+  }
+  return $match.Groups['content'].Value.Trim()
+}
+
+$iconContent = Get-SvgInnerContent $iconPath
+$wordmarkContent = Get-SvgInnerContent $wordmarkPath
 $svg = @"
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- SPDX-FileCopyrightText: 2026 Gaddr -->
 <!-- SPDX-License-Identifier: AGPL-3.0-only -->
 <svg xmlns="http://www.w3.org/2000/svg" width="680" height="202" viewBox="0 0 680 202" role="img" aria-label="Gaddr">
-  <image x="0" y="51" width="154" height="100" preserveAspectRatio="xMidYMid meet" href="data:image/svg+xml;base64,$iconData"/>
-  <image x="184" y="0" width="496" height="202" preserveAspectRatio="xMidYMid meet" href="data:image/svg+xml;base64,$wordmarkData"/>
+  <svg x="0" y="51" width="154" height="100" viewBox="0 0 43 28" preserveAspectRatio="xMidYMid meet">
+$iconContent
+  </svg>
+  <svg x="184" y="0" width="496" height="202" viewBox="0 0 496 202" preserveAspectRatio="xMidYMid meet">
+$wordmarkContent
+  </svg>
 </svg>
 "@
 
