@@ -12,6 +12,15 @@ export default defineConfig({
     __APP_VERSION__: JSON.stringify(version),
   },
   plugins: [react(), tailwindcss()],
+  build: {
+    rolldownOptions: {
+      output: {
+        entryFileNames: 'assets/[name]-gaddr-20260829-[hash].js',
+        chunkFileNames: 'assets/[name]-gaddr-20260829-[hash].js',
+        assetFileNames: 'assets/[name]-gaddr-20260829-[hash][extname]',
+      },
+    },
+  },
   resolve: {
     alias: {
       '@': path.resolve(import.meta.dirname, './src'),
