@@ -7,7 +7,7 @@
 
 import { useEffect, useSyncExternalStore } from 'react';
 import { useTranslation } from 'react-i18next';
-import gaddrLogo from '@/assets/gaddr-logo.svg';
+import gaddrLogo from '@/assets/gaddr-brand.svg';
 import { getLogoState, loadLogoOnce, subscribeToLogo } from '@/lib/logoCache';
 
 export function DefaultLogo() {
