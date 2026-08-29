@@ -1,7 +1,7 @@
 # Gaddr WebUI bundle
 
 `webui.zip` is the production bundle built from source commit
-`2a137c87c7eaed8811480e5e38b25a5ff6f6bb1f` with:
+`66fdffee731238c7b9e92e963e000d49e0a2b362` with:
 
 ```sh
 npm ci
